@@ -1,0 +1,38 @@
+{% extends 'layouts/base.html' %} {% block titulo %}Asignacion Horario {% endblock %} {% block contenido %}
+<h1>Asigne la Fecha y Horas a la materia</h1>
+
+ <div class="row">
+    <div class="col-md-4 offset-md-4">
+      <div class="card card-body">
+        <form action="/docentes/asignar_espacio/{{contact.0}}" method="POST">
+          <div class="form-group">
+            <input type="text" name="id_materia" value="{{contact.0}}" class="form-control" disabled = "true">
+          </div>
+          <br>
+          <div class="form-group">
+            <input type="text" name="nombremateria" value="{{contact.1}}" class="form-control" disabled = "true">
+          </div>
+          <br>
+          <div class="form-group">
+            <input type="date" name="fecha" value="" class="form-control">
+          </div>
+          <br>
+          <div class="form-group">
+            <input type="time" name="hora_inicio" value="" class="form-control">
+          </div>
+          <br>
+          <div class="form-group">
+            <input type="time" name="hora_final" value="" class="form-control">
+          </div>
+          <br>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">
+              Actualizar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

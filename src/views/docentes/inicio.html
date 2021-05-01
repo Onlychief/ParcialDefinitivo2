@@ -1,0 +1,23 @@
+{% extends 'layouts/base.html' %} {% block titulo %} Login {% endblock %} {% block contenido %}
+
+<h1 align = "center">Opciones de Sesión</h1>
+<body>
+<br>
+<br>
+<div align= "center">
+<div class ="row">
+<div class="col-md-4 offset-md-4">
+<div class="card card-body">
+<a href="{{ url_for('login_estudiante') }}">
+<button type="button" class="btn-lg btn-success btn"  href="{{ url_for('login_estudiante') }}">Estudiantes</button>
+</a>
+<br>
+<a href="{{ url_for('login') }}">
+<button type="button" class="btn-lg btn-success btn"  href="{{ url_for('login') }}">Docentes</button>
+</a>
+</div>
+</div>
+</div>
+</div>
+</body>
+{% endblock %}

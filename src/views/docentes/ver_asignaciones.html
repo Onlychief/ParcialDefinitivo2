@@ -1,0 +1,55 @@
+{% extends 'layouts/base.html' %} {% block titulo %}Clases Programadas {% endblock %} {% block contenido %}
+<h1 align = "center">Listado de Clases Programadas</h1>
+
+<a href="{{ url_for('ver_asignaciones') }}"></a>
+<div class ="col sm-12">
+<table class="table table-dark table-striped">
+    <div class="row">
+    <div class ="col sm-12">
+    <div class = "col sm-3"> 
+    <div class = "col sm-6">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>materia</th>
+            <th>fecha</th>
+            <th>hora_inicio</th>
+            <th>hora_fin</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for asignacion in asignaciones %}
+        <tr>
+            <td>{{ asignacion[0] }}</td>
+            <td>{{ asignacion[5] }}</td>
+            <td>{{ asignacion[2] }}</td>
+            <td>{{ asignacion[3] }}</td>
+            <td>{{ asignacion[4] }}</td>
+            <td>
+            <form action="/id_para_asistencia/{{asignacion.0}}" method="POST">
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">
+              Revisar Asistencia
+            </button>
+          </div>
+          </form>
+             </td>
+        </tr>
+        {%endfor%}
+    </td>  
+    </div>
+    </div>
+    </div>
+    </tbody>
+</table>
+</div>
+<br>
+    <a href="{{ url_for('ver_materias') }}">
+    <button type="button" class="btn btn-success btn" href="{{ url_for('ver_materias') }}">
+    Volver
+    </button>
+    </a>
+<br>
+    
+{% endblock %}

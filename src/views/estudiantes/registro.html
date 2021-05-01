@@ -1,0 +1,44 @@
+{% extends 'layouts/base.html' %} {% block titulo %} Inicio {% endblock %} {% block contenido %}
+
+<br>
+<form action="{{ url_for('registro_estudiantes') }}" method="POST" align = "center">
+    <div class ="row">
+    <div class="col-md-4 offset-md-4">
+    <div class="card card-body">
+    <h3 align = "center"><label for="Datos">Registro de Estudiantes</label></h3><br>
+    <table width = "100%">
+    <tr>
+    <td>Nombres</td>
+    <td><br><input type="text" size = "30" maxlength ="30" required class="form-control" id="nombre" name="nombre"><br></td>
+    </tr>
+    <tr>
+    <td>Apellidos</td>
+    <td><br><input type="text" size = "30" maxlength ="30" required class="form-control" id="apellido" name="apellido"><br></td>
+    </tr>
+    <tr>
+    <td>Correo</td>
+    <td><br><input type="email" required class="form-control" id="correo" name="correo" text="Correo"><br></td>
+    </tr>
+    <tr>
+    <td>Celular</td>
+    <td><br><input type="text" required class="form-control" id="celular" name="celular" text="celular"><br></td>
+    </tr>
+    <tr>
+    <td>Clave</td>
+    <td><br><input type="password" required class="form-control" id="clave" name="clave"><br></td>
+    </tr>
+    <tr>
+    <td>Semestre</td>
+    <td><br><select name="semestre" id="semestre">
+    <option input type value="semestre">X</option>
+    <option value="semestre">IV</option>
+</select></td>
+    </tr>   
+     </table>   
+    </div>
+    </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Registrar</button>
+</form>
+
+{% endblock %}

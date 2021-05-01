@@ -1,0 +1,35 @@
+{% extends 'layouts/base.html' %} {% block titulo %} Inicio {% endblock %} {% block contenido %}
+
+<br>
+<form action="{{ url_for('registro_docentes') }}" method="POST">
+    <div class="row">
+    <div class ="col sm-12">
+    <div class = "col sm-3"> </div>
+    <div class = "col sm-6">
+    <h3 align = "center"><label for="Datos">Registro de Docentes</label></h3>
+    <table width = "100%">
+    <tr>
+    <td>Nombres</td>
+    <td><input type="text" size = "15" maxlength ="15" required class="form-control" id="nombre" name="nombre"></td>
+    </tr>
+    <tr>
+    <tr>
+    <td>Apellidos</td>
+    <td><input type="text" size = "15" maxlength ="15" required class="form-control" id="apellido" name="apellido"></td>
+    </tr>
+    <tr>
+    <td>Correo</td>
+    <td><input type="email" required class="form-control" id="correo" name="correo" text="Correo"></td>
+    </tr>
+    <tr>
+    <td>Clave</td>
+    <td><input type="password" required class="form-control" id="clave" name="clave"></td>
+    </tr>   
+     </table>   
+    </div>
+    </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+
+{% endblock %}
