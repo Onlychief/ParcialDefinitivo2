@@ -33,7 +33,6 @@ def revisar_asistencia(id_espacio):
 def ver_asistencia():
     if "idespacio" in session:
         id_espacio = session["idespacio"]  
-        
         if request.method == 'GET':
             asistenciaModel = AsistenciaModel()
             asistencias = asistenciaModel.listar_asistencias(id_espacio)

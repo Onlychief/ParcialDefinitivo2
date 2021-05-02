@@ -22,7 +22,6 @@ class EstudiantesModel():
         cursor.close()
 
     def ingreso_estudiante(self, correo, clave):
-        
         cursor = DB.cursor()
         cursor.execute('select id from estudiantes WHERE correo=? AND clave =?', (correo,clave))
         id_usuario = cursor.fetchall()
@@ -54,16 +53,15 @@ class EstudiantesModel():
         
 
     def lista_materias_semestre(self, id_semestre):
-    
         cursor = DB.cursor()
         cursor.execute ('select espacio_academico.id, espacio_academico.nombre, espacio_academico.semestre, espacio_academico.docente, semestre.desc_semestre from espacio_academico JOIN semestre ON espacio_academico.semestre=semestre.id WHERE espacio_academico.semestre = ? ', [id_semestre])
         materias_por_semestre = cursor.fetchall()
         cursor.close()
         return(materias_por_semestre)
 
-    def obtener_asignaciones_programadas(self,fecha_actual,hora_fin):
+    def obtener_asignaciones_programadas(self,fecha_actual,hora_fin,id_semestre):
         cursor = DB.cursor()
-        cursor.execute("select asignacion_espacios.id, asignacion_espacios.espacio, asignacion_espacios.fecha, asignacion_espacios.hora_inicio, asignacion_espacios.hora_fin, espacio_academico.nombre from asignacion_espacios JOIN espacio_academico ON asignacion_espacios.espacio=espacio_academico.id WHERE fecha >= ? AND hora_fin > ?",[fecha_actual, hora_fin])
+        cursor.execute("select asignacion_espacios.id, asignacion_espacios.espacio, asignacion_espacios.fecha, asignacion_espacios.hora_inicio, asignacion_espacios.hora_fin, espacio_academico.nombre, espacio_academico.semestre from asignacion_espacios JOIN espacio_academico ON asignacion_espacios.espacio=espacio_academico.id WHERE fecha >= ? AND hora_fin > ? AND espacio_academico.semestre=?",[fecha_actual, hora_fin,id_semestre])
         data = cursor.fetchall()
         cursor.close() 
         return (data)

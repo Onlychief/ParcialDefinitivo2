@@ -14,10 +14,9 @@ def ver_materias():
     if "docente" in session:
         id_docente = session["docente"]
         if request.method == 'GET':
-      
             materiasModel =DocentesModel()
             materias = materiasModel.obtener_asignacion_docente(int(id_docente))
-            return render_template('docentes/ver_materias.html', materias = materias)
+        return render_template('docentes/ver_materias.html', materias = materias)
     else:
         return redirect(url_for('login'))
 
@@ -40,10 +39,13 @@ def asignar_espacio(id_materia):
 
 @app.route('/ver_asignaciones', methods =['GET', 'POST'])
 def ver_asignaciones():
-    if request.method == 'GET':
-        asignacionesModel = DocentesModel()
-        asignaciones = asignacionesModel.obtener_asignaciones()
-        return render_template('docentes/ver_asignaciones.html', asignaciones = asignaciones)
+    if "docente" in session:
+        if request.method == 'GET':
+            asignacionesModel = DocentesModel()
+            asignaciones = asignacionesModel.obtener_asignaciones()
+            return render_template('docentes/ver_asignaciones.html', asignaciones = asignaciones)
+    else: 
+        return redirect(url_for('login'))
 
 @app.route('/registro', methods =['GET', 'POST'])
 def registro_docentes():
@@ -83,3 +85,10 @@ def login():
 def inicio():
     if request.method == 'GET':
         return render_template('/docentes/inicio.html')
+
+@app.route('/clases_programadas/eliminar/<id_clase>', methods =['GET', 'POST'])
+def eliminar_clase(id_clase):
+    if request.method == 'GET':
+        docentesModel = DocentesModel()
+        docentesModel.eliminar_clase(id_clase)
+        return redirect(url_for('ver_asignaciones'))
