@@ -62,11 +62,11 @@ def registro_docentes():
         docentesModel.registro_docente(nombre, apellido,correo,claveEncriptada)
         return redirect(url_for('ver_materias'))
 
-@app.route('/ingreso', methods =['GET', 'POST'])
+@app.route('/ingreso_docente', methods =['GET', 'POST'])
 def login():
 
     if request.method == 'GET':
-        return render_template('/docentes/ingreso.html')
+        return render_template('/docentes/ingreso_docente.html')
     else:
         correo = request.form.get('correo')
         clave = request.form.get('clave')

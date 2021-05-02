@@ -66,7 +66,7 @@ def registro_estudiantes():
 def login_estudiante():
     
     if request.method == 'GET':
-        return render_template('/estudiantes/ingreso.html')
+        return render_template('/estudiantes/ingreso_estudiantes.html')
     else:
         correo = request.form.get('correo')
         clave = request.form.get('clave')
