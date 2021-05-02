@@ -59,14 +59,14 @@
             <td>{{ asignacion[4] }}</td>
             <td>
             <form action="/id_para_asistencia/{{asignacion.0}}" method="POST">
-          <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block">
               Revisar Asistencia
             </button>
-          </div>
           </form>
              </td>
-        </tr>
+            <td>
+            <a href="/clases_programadas/eliminar/{{asignacion.0}}" class="btn btn-danger btn-delete">Eliminar</a> 
+            </td>
         {%endfor%}
     </td>  
     </div>

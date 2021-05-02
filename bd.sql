@@ -40,12 +40,10 @@ CREATE TABLE IF NOT EXISTS `asignacion_espacios` (
   PRIMARY KEY (`id`),
   KEY `espaciso` (`espacio`),
   CONSTRAINT `espaciso` FOREIGN KEY (`espacio`) REFERENCES `espacio_academico` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla control_asistencia.asignacion_espacios: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `asignacion_espacios` DISABLE KEYS */;
-INSERT INTO `asignacion_espacios` (`id`, `espacio`, `fecha`, `hora_inicio`, `hora_fin`) VALUES
-	(25, 5, '2021-05-11', '21:07:00', '22:07:00');
 /*!40000 ALTER TABLE `asignacion_espacios` ENABLE KEYS */;
 
 -- Volcando estructura para tabla control_asistencia.asistencia
@@ -61,10 +59,13 @@ CREATE TABLE IF NOT EXISTS `asistencia` (
   KEY `estuds` (`estudiantes`),
   CONSTRAINT `azigs` FOREIGN KEY (`asignacion_espacios`) REFERENCES `asignacion_espacios` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `estuds` FOREIGN KEY (`estudiantes`) REFERENCES `estudiantes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla control_asistencia.asistencia: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `asistencia` DISABLE KEYS */;
+INSERT INTO `asistencia` (`id`, `falta`, `hora_entradaest`, `hora_salidaest`, `asignacion_espacios`, `estudiantes`) VALUES
+	(4, 'Asistió', '09:36:02', '09:36:02', NULL, NULL),
+	(5, 'Asistió', '10:50:26', '10:50:26', NULL, 12);
 /*!40000 ALTER TABLE `asistencia` ENABLE KEYS */;
 
 -- Volcando estructura para tabla control_asistencia.docente
@@ -77,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `docente` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla control_asistencia.docente: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla control_asistencia.docente: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `docente` DISABLE KEYS */;
 INSERT INTO `docente` (`id`, `Nombres`, `Apellidos`, `correo`, `clave`) VALUES
 	(1, 'Jeyson', 'Calvache', 'ejemplo@hotmail.com', 'faffsfs'),
@@ -98,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `espacio_academico` (
   CONSTRAINT `semestres` FOREIGN KEY (`semestre`) REFERENCES `semestre` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla control_asistencia.espacio_academico: ~4 rows (aproximadamente)
+-- Volcando datos para la tabla control_asistencia.espacio_academico: ~5 rows (aproximadamente)
 /*!40000 ALTER TABLE `espacio_academico` DISABLE KEYS */;
 INSERT INTO `espacio_academico` (`id`, `nombre`, `semestre`, `docente`) VALUES
 	(1, 'Electiva Profesional', 1, 3),
@@ -120,13 +121,13 @@ CREATE TABLE IF NOT EXISTS `estudiantes` (
   PRIMARY KEY (`id`),
   KEY `semestre` (`Semestre`),
   CONSTRAINT `semestre` FOREIGN KEY (`Semestre`) REFERENCES `semestre` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla control_asistencia.estudiantes: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `estudiantes` DISABLE KEYS */;
 INSERT INTO `estudiantes` (`id`, `Nombres`, `Apellidos`, `Celular`, `Correo`, `Clave`, `Semestre`) VALUES
-	(7, 'pruebas', 'fdsafa', '202cb962ac59075b964b07152d234b70', 'prueba23@hotmail.com', '202cb962ac59075b964b07152d234b70', 1),
-	(11, 'Jhonatan', 'Noveno Semestre', '3138030940', 'jhon9@hotmail.com', '202cb962ac59075b964b07152d234b70', 2);
+	(11, 'Jhonatan', 'Noveno Semestre', '3138030940', 'jhon9@hotmail.com', '202cb962ac59075b964b07152d234b70', 2),
+	(12, 'estudaitnecreado', 'fdsfdas', '321321312', 'prueba24@hotmail.com', '202cb962ac59075b964b07152d234b70', 1);
 /*!40000 ALTER TABLE `estudiantes` ENABLE KEYS */;
 
 -- Volcando estructura para tabla control_asistencia.semestre
